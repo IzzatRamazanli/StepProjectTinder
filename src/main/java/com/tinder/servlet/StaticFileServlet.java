@@ -4,6 +4,7 @@ package com.tinder.servlet;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.ServletException;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,12 @@ import java.nio.file.Paths;
 
 @RequiredArgsConstructor
 public class StaticFileServlet extends HttpServlet {
-    private final String directory;
 
+    private final String directory;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Path path = Paths.get(directory, req.getPathInfo());
-        try (ServletOutputStream outputStream = resp.getOutputStream()) {
-            Files.copy(path, outputStream);
-        }
+        ServletOutputStream os = resp.getOutputStream();
+        Files.copy(path, os);
     }
 }

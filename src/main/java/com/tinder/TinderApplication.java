@@ -1,9 +1,6 @@
 package com.tinder;
 
-import com.tinder.model.User;
-import com.tinder.servlet.LikeServlet;
-import com.tinder.servlet.StaticFileServlet;
-import com.tinder.servlet.TestServlet;
+import com.tinder.servlet.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -16,7 +13,9 @@ public class TinderApplication {
 
         handler.addServlet(TestServlet.class, "/test");
         handler.addServlet(new ServletHolder(LikeServlet.class), "/like");
-        handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/*");
+        handler.addServlet(new ServletHolder(RegistrationServlet.class), "/register");
+        handler.addServlet(new ServletHolder(MessagingServlet.class), "/chat");
+        handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/templates")), "/static/*");
 
 
         server.setHandler(handler);
