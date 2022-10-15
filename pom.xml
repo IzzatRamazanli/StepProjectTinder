@@ -19,14 +19,17 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>11.0.12</version>
+            <version>9.4.49.v20220914</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>11.0.12</version>
+            <version>9.4.49.v20220914</version>
         </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -48,6 +51,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <includes>
+                    <include>templates/*.ftl</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

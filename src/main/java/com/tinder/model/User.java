@@ -11,8 +11,8 @@ public class User {
     private final String email;
     @Getter
     private final String password;
-    private final String name;
-    private final String surname;
+    private final String firstname;
+    private final String lastname;
     private final int age;
     private final String pictureUrl;
 
