@@ -1,5 +1,6 @@
 package com.tinder.servlet;
 
+import com.tinder.util.TemplateEngine;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
@@ -18,19 +19,13 @@ import java.util.HashMap;
 @RequiredArgsConstructor
 public class LikeServlet extends HttpServlet {
 
+    private final TemplateEngine engine = new TemplateEngine(this);
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Configuration configuration = new Configuration(Configuration.VERSION_2_3_31);
-        configuration.setDefaultEncoding(String.valueOf(StandardCharsets.UTF_8));
-        configuration.setClassForTemplateLoading(this.getClass(), "/templates/");
 
         HashMap<String, Object> data = new HashMap<>();
-        try (PrintWriter writer = resp.getWriter()) {
-            configuration.getTemplate("like-page.ftl").process(data, writer);
-        } catch (TemplateException e) {
-            throw new RuntimeException(e);
-        }
-
-
+        engine.render("like-page.ftl", data, resp);
     }
 }
