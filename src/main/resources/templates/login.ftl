@@ -1,32 +1,34 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="img/favicon.ico">
-
-    <title>Signin Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
-<body class="text-center">
-    <form class="form-signin">
-        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; Tinder 2018</p>
-    </form>
+<body>
+<div class="container">
+    <div class="blueBg">
+        <div class="box signin">
+            <h2>Already have an account ?</h2>
+            <button class="signinBtn">Sign in</button>
+        </div>
+        <div class="box signup">
+            <h2>Don't have an account ?</h2>
+            <button class="signupBtn"><a href="registration.ftl" style="text-decoration: none;">Registration</a></button>
+        </div>
+    </div>
+    <div class="formBox">
+        <div class="form signinForm">
+            <form>
+                <h3>Sign In</h3>
+                <input type="text" name="signIn" id="signIn" placeholder="Username" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="submit" value="LOGIN">
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

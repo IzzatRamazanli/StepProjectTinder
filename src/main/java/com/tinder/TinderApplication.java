@@ -15,6 +15,7 @@ public class TinderApplication {
         handler.addServlet(new ServletHolder(LikeServlet.class), "/like");
         handler.addServlet(new ServletHolder(RegistrationServlet.class), "/register");
         handler.addServlet(new ServletHolder(MessagingServlet.class), "/chat");
+        handler.addServlet(new ServletHolder(LoginServlet.class), "/login");
         handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/*");
 
 
