@@ -140,5 +140,19 @@ public class Database {
         return messages;
     }
 
+    public void saveMessage(Message message) {
+        String query = "insert into tinder.message (sender, receiver, content, sendDate) values (?, ?, ?, ?)";
+        try (Connection connection = helper.connection(); PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, message.getSender());
+            statement.setInt(2, message.getReceiver());
+            statement.setString(3, message.getContent());
+            statement.setString(4, message.getSendDate());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            helper.showErrorMessage(ex);
+        }
+
+    }
+
 
 }
