@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 @Data
 @AllArgsConstructor
 public class Message {
+    private int id;
     private int sender;
     private int receiver;
     private String content;

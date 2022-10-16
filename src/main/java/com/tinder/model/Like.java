@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Like {
 
+    private int id;
     private int from;
     private int to;
     private boolean status;
