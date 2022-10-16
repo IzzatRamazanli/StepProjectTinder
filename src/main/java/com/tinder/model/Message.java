@@ -16,7 +16,11 @@ public class Message {
     private String content;
     private String sendDate;
 
-    public Message() {
+    public Message(int sender, int receiver, String content) {
         this.sendDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.sender = sender;
+        this.receiver = receiver;
+        this.content = content;
     }
+
 }
