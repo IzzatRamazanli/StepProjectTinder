@@ -10,7 +10,6 @@ public class TinderApplication {
         Server server = new Server(8080);
         ServletContextHandler handler = new ServletContextHandler();
 
-
         handler.addServlet(TestServlet.class, "/test");
         handler.addServlet(new ServletHolder(LikeServlet.class), "/like");
         handler.addServlet(new ServletHolder(RegistrationServlet.class), "/register");
@@ -18,10 +17,8 @@ public class TinderApplication {
         handler.addServlet(new ServletHolder(LoginServlet.class), "/login");
         handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/*");
 
-
         server.setHandler(handler);
         server.start();
         server.join();
-
     }
 }

@@ -17,7 +17,20 @@ import java.util.List;
 @AllArgsConstructor
 public class LikeService {
     private final UserDao userDao;
+    private final LikesDao likesDao;
     private final Connection connection;
+
+    public List<Like> getAllUsers() {
+        return likesDao.getAll();
+    }
+
+    public void insertLike(Like like) {
+        likesDao.save(like);
+    }
+
+    public void deleteLike(int id) {
+        likesDao.delete(id);
+    }
 
     public List<User> getLikedUser(int id) {
         return getLikedUserSQL(id);
@@ -34,6 +47,7 @@ public class LikeService {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
+
                 int uid = resultSet.getInt("id");
                 String email = resultSet.getString("email");
                 String firstname = resultSet.getString("firstname");
