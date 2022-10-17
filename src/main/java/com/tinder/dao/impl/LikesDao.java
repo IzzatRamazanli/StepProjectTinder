@@ -5,6 +5,7 @@ import com.tinder.model.Like;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class LikesDao implements Dao<Like> {
     @Override
@@ -14,6 +15,11 @@ public class LikesDao implements Dao<Like> {
 
     @Override
     public Optional<Like> get(int id) {
+        return null;
+    }
+
+    @Override
+    public List<Like> getBy(Predicate<Like> predicate) {
         return null;
     }
 

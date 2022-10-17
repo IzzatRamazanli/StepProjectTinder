@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class UserDao implements Dao<User> {
 
@@ -45,6 +47,11 @@ public class UserDao implements Dao<User> {
             }
         }
         return users;
+    }
+
+    @Override
+    public List<User> getBy(Predicate<User> predicate) {
+        return getAll().stream().filter(predicate).toList();
     }
 
     @Override

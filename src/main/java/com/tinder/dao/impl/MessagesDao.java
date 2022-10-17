@@ -5,6 +5,7 @@ import com.tinder.model.Message;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class MessagesDao implements Dao<Message> {
     @Override
@@ -14,6 +15,11 @@ public class MessagesDao implements Dao<Message> {
 
     @Override
     public Optional<Message> get(int id) {
+        return null;
+    }
+
+    @Override
+    public List<Message> getBy(Predicate<Message> predicate) {
         return null;
     }
 
