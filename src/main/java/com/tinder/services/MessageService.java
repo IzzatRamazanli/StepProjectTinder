@@ -18,6 +18,10 @@ public class MessageService {
         messagesDao.save(message);
     }
 
+    public Message getMessage(int id) {
+        return messagesDao.get(id).orElse(null);
+    }
+
     public void deleteMessage(int id) {
         messagesDao.delete(id);
     }

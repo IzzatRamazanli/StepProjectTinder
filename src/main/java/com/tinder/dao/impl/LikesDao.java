@@ -60,9 +60,7 @@ public class LikesDao implements Dao<Like> {
                             resultSet.getBoolean("status")
                     ));
         }
-
     }
-
     @Override
     public List<Like> getBy(Predicate<Like> predicate) {
         return getAll().stream().filter(predicate).toList();

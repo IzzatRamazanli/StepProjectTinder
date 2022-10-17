@@ -21,4 +21,11 @@ public class MessagingServlet extends HttpServlet {
         HashMap<String, Object> data = new HashMap<>();
         engine.render("chat.ftl", data, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String firstname = req.getParameter("firstname");
+        String lastname = req.getParameter("lastname");
+
+    }
 }
