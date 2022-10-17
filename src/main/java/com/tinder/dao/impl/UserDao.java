@@ -63,6 +63,7 @@ public class UserDao implements Dao<User> {
             ResultSet resultSet = statement.executeQuery();
             return !resultSet.next() ? Optional.empty() : Optional.of(
                     new User(
+                            resultSet.getInt("id"),
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("firstname"),

@@ -54,6 +54,7 @@ public class LikesDao implements Dao<Like> {
             ResultSet resultSet = statement.executeQuery();
             return !resultSet.next() ? Optional.empty() : Optional.of(
                     new Like(
+                            resultSet.getInt("id"),
                             resultSet.getInt("from"),
                             resultSet.getInt("to"),
                             resultSet.getBoolean("status")

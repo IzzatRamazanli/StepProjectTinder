@@ -1,13 +1,13 @@
 package com.tinder.dao.impl;
 
 import com.tinder.dao.Dao;
+import com.tinder.model.Like;
 import com.tinder.model.Message;
 import lombok.SneakyThrows;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class MessagesDao implements Dao<Message> {
     private final String getQuery = " select * from messages where id = ?";
     private final String insertQuery = "insert into messages(sender, receiver, content, send_date)" +
             "values(?, ?, ?, ?)";
-    private final String delete = "delete from messages where id = ?";
+    private final String deleteQuery = "delete from messages where id = ?";
 
     @Override
     @SneakyThrows
@@ -50,13 +50,25 @@ public class MessagesDao implements Dao<Message> {
     }
 
     @Override
+    @SneakyThrows
     public Optional<Message> get(int id) {
-        return null;
+        try (PreparedStatement statement = connection.prepareStatement(getQuery)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            return !resultSet.next() ? Optional.empty() : Optional.of(
+                    new Message(
+                            resultSet.getInt("id"),
+                            resultSet.getInt("sender"),
+                            resultSet.getInt("receiver"),
+                            resultSet.getString("content"),
+                            resultSet.getString("send_date")
+                    ));
+        }
     }
 
     @Override
     public List<Message> getBy(Predicate<Message> predicate) {
-        return null;
+        return getAll().stream().filter(predicate).toList();
     }
 
     @Override
@@ -72,9 +84,12 @@ public class MessagesDao implements Dao<Message> {
         }
     }
 
-
     @Override
+    @SneakyThrows
     public void delete(int id) {
-
+        try (PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
+            statement.setInt(1, id);
+            statement.execute();
+        }
     }
 }
