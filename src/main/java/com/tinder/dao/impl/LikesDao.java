@@ -19,19 +19,19 @@ public class LikesDao implements Dao<Like> {
         this.connection = connection;
     }
 
-    private final String getAllQuery = "select * from likes";
+    private final String getLikes = "select * from likes";
 
-    private final String get = "select * from users where id = ?";
+    private final String getLike = "select * from likes where id = ?";
 
-    private final String insertQuery = "insert into likes(from, to, status)" +
+    private final String insertLike = "insert into likes(from, to, status)" +
             "values(?, ?, ?)";
-    private final String deleteQuery = "delete from likes where id = ?";
+    private final String deleteLike = "delete from likes where id = ?";
 
     @Override
     @SneakyThrows
     public List<Like> getAll() {
         List<Like> likes = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(getAllQuery)) {
+        try (PreparedStatement statement = connection.prepareStatement(getLikes)) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Like l = new Like(
@@ -49,7 +49,7 @@ public class LikesDao implements Dao<Like> {
     @Override
     @SneakyThrows
     public Optional<Like> get(int id) {
-        try (PreparedStatement statement = connection.prepareStatement(get)) {
+        try (PreparedStatement statement = connection.prepareStatement(getLike)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             return !resultSet.next() ? Optional.empty() : Optional.of(
@@ -71,7 +71,7 @@ public class LikesDao implements Dao<Like> {
     @Override
     @SneakyThrows
     public void save(Like entity) {
-        try (PreparedStatement statement = connection.prepareStatement(insertQuery)) {
+        try (PreparedStatement statement = connection.prepareStatement(insertLike)) {
             statement.setInt(1, entity.getFrom());
             statement.setInt(2, entity.getTo());
             statement.setBoolean(3, entity.isStatus());
@@ -82,7 +82,7 @@ public class LikesDao implements Dao<Like> {
     @Override
     @SneakyThrows
     public void delete(int id) {
-        try (PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
+        try (PreparedStatement statement = connection.prepareStatement(deleteLike)) {
             statement.setInt(1, id);
             statement.execute();
         }

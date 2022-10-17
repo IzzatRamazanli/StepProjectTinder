@@ -22,17 +22,17 @@ public class MessagesDao implements Dao<Message> {
         this.connection = connection;
     }
 
-    private final String getAllQuery = "select * from messages";
-    private final String getQuery = " select * from messages where id = ?";
-    private final String insertQuery = "insert into messages(sender, receiver, content, send_date)" +
+    private final String getMessages = "select * from messages";
+    private final String getMessage = " select * from messages where id = ?";
+    private final String insertMessage = "insert into messages(sender, receiver, content, send_date)" +
             "values(?, ?, ?, ?)";
-    private final String deleteQuery = "delete from messages where id = ?";
+    private final String deleteMessage = "delete from messages where id = ?";
 
     @Override
     @SneakyThrows
     public List<Message> getAll() {
         List<Message> messages = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(getAllQuery)) {
+        try (PreparedStatement statement = connection.prepareStatement(getMessages)) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Message m = new Message(
@@ -51,7 +51,7 @@ public class MessagesDao implements Dao<Message> {
     @Override
     @SneakyThrows
     public Optional<Message> get(int id) {
-        try (PreparedStatement statement = connection.prepareStatement(getQuery)) {
+        try (PreparedStatement statement = connection.prepareStatement(getMessage)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             return !resultSet.next() ? Optional.empty() : Optional.of(
@@ -74,7 +74,7 @@ public class MessagesDao implements Dao<Message> {
     @SneakyThrows
     public void save(Message entity) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd 'at' HH:mm");
-        try (PreparedStatement statement = connection.prepareStatement(insertQuery)) {
+        try (PreparedStatement statement = connection.prepareStatement(insertMessage)) {
             statement.setInt(1, entity.getSender());
             statement.setInt(2, entity.getReceiver());
             statement.setString(3, entity.getContent());
@@ -86,7 +86,7 @@ public class MessagesDao implements Dao<Message> {
     @Override
     @SneakyThrows
     public void delete(int id) {
-        try (PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
+        try (PreparedStatement statement = connection.prepareStatement(deleteMessage)) {
             statement.setInt(1, id);
             statement.execute();
         }
