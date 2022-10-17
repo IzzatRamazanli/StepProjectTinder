@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 
 @AllArgsConstructor
@@ -26,6 +25,10 @@ public class LikeService {
 
     public void insertLike(Like like) {
         likesDao.save(like);
+    }
+
+    public Like getLike(int id) {
+        return likesDao.get(id).orElse(null);
     }
 
     public void deleteLike(int id) {
