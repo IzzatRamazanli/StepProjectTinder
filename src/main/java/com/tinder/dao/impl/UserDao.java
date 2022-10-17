@@ -19,7 +19,7 @@ public class UserDao implements Dao<User> {
 
     private final String getAllQuery = "select * from users";
     private final String getQuery = "select * from users where id = ?";
-    private final String insertQuery = "insert into users(email, password, firstname, lastname, age, pictureUrl)" +
+    private final String insertQuery = "insert into users(email, password, firstname, lastname, age, url)" +
             "values(?, ?, ? ,?, ?, ?)";
     private final String deleteQuery = "delete from users where id = ?";
 
@@ -41,7 +41,7 @@ public class UserDao implements Dao<User> {
                         resultSet.getString("firstname"),
                         resultSet.getString("lastname"),
                         resultSet.getInt("age"),
-                        resultSet.getString("pictureUrl")
+                        resultSet.getString("url")
                 );
                 users.add(u);
             }
@@ -68,7 +68,7 @@ public class UserDao implements Dao<User> {
                             resultSet.getString("firstname"),
                             resultSet.getString("lastname"),
                             resultSet.getInt("age"),
-                            resultSet.getString("pictureUrl")
+                            resultSet.getString("url")
                     )
             );
         }
@@ -83,7 +83,7 @@ public class UserDao implements Dao<User> {
             statement.setString(3, entity.getFirstname());
             statement.setString(4, entity.getLastname());
             statement.setInt(5, entity.getAge());
-            statement.setString(6, entity.getPictureUrl());
+            statement.setString(6, entity.getUrl());
             statement.executeUpdate();
         }
     }

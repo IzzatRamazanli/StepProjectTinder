@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public class LikesDao implements Dao<Like> {
+
     @Override
     public List<Like> getAll() {
         return null;

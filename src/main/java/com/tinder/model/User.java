@@ -13,7 +13,7 @@ public class User {
     private String firstname;
     private String lastname;
     private int age;
-    private String pictureUrl;
+    private String url;
 
     public User(String email, String password, String firstname, String lastname, int age, String pictureUrl) {
         this.email = email;
@@ -21,6 +21,6 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
-        this.pictureUrl = pictureUrl;
+        this.url = pictureUrl;
     }
 }
