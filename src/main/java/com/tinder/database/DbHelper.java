@@ -1,5 +1,7 @@
 package com.tinder.database;
 
+import lombok.SneakyThrows;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,7 +11,8 @@ public class DbHelper {
     private static final String user = "postgres";
     private static final String password = "root";
 
-    public Connection connection() throws SQLException {
+    @SneakyThrows
+    public Connection connection() {
         return DriverManager.getConnection(url, user, password);
     }
 

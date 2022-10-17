@@ -33,6 +33,7 @@ public class UserDao implements Dao<User> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 User u = new User(
+                        resultSet.getInt("id"),
                         resultSet.getString("email"),
                         resultSet.getString("password"),
                         resultSet.getString("firstname"),
