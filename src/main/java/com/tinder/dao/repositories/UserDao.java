@@ -1,7 +1,7 @@
-package com.tinder.dao.impl;
+package com.tinder.dao.repositories;
 
 import com.tinder.dao.Dao;
-import com.tinder.model.User;
+import com.tinder.models.User;
 import lombok.SneakyThrows;
 
 import java.sql.Connection;

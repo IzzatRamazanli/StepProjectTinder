@@ -1,7 +1,7 @@
 package com.tinder.services;
 
-import com.tinder.dao.impl.MessagesDao;
-import com.tinder.model.Message;
+import com.tinder.dao.repositories.MessagesDao;
+import com.tinder.models.Message;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.tinder.servlet;
+package com.tinder.servlets;
 
 
 import javax.servlet.ServletException;

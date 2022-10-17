@@ -1,7 +1,7 @@
 package com.tinder.services;
 
-import com.tinder.dao.impl.UserDao;
-import com.tinder.model.User;
+import com.tinder.dao.repositories.UserDao;
+import com.tinder.models.User;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

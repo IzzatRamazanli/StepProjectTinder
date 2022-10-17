@@ -1,6 +1,6 @@
 package com.tinder;
 
-import com.tinder.servlet.*;
+import com.tinder.servlets.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;

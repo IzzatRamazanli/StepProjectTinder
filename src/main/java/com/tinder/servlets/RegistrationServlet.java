@@ -1,7 +1,6 @@
-package com.tinder.servlet;
+package com.tinder.servlets;
 
-import com.tinder.util.TemplateEngine;
-import lombok.RequiredArgsConstructor;
+import com.tinder.utils.TemplateEngine;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,15 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 
-@RequiredArgsConstructor
-public class LoginServlet extends HttpServlet {
-//    http://localhost:8080/login
-
+public class RegistrationServlet extends HttpServlet {
+//    http://localhost:8080/register
     private final TemplateEngine engine = new TemplateEngine(this);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HashMap<String, Object> data = new HashMap<>();
-        engine.render("login.ftl", data, resp);
+        engine.render("registration.ftl", data, resp);
     }
 }

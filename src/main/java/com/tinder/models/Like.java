@@ -1,4 +1,4 @@
-package com.tinder.model;
+package com.tinder.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,8 @@
-package com.tinder.servlet;
+package com.tinder.servlets;
 
-import com.tinder.util.TemplateEngine;
+import com.tinder.utils.TemplateEngine;
 import lombok.RequiredArgsConstructor;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,21 +12,14 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @RequiredArgsConstructor
-public class MessagingServlet extends HttpServlet {
-//    http://localhost:8080/chat
+public class LikeServlet extends HttpServlet {
+//    http://localhost:8080/like
 
     private final TemplateEngine engine = new TemplateEngine(this);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HashMap<String, Object> data = new HashMap<>();
-        engine.render("chat.ftl", data, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String firstname = req.getParameter("firstname");
-        String lastname = req.getParameter("lastname");
-
+        engine.render("like-page.ftl", data, resp);
     }
 }

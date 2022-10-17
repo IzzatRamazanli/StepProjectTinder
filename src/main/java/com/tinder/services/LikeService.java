@@ -1,9 +1,9 @@
 package com.tinder.services;
 
-import com.tinder.dao.impl.LikesDao;
-import com.tinder.dao.impl.UserDao;
-import com.tinder.model.Like;
-import com.tinder.model.User;
+import com.tinder.dao.repositories.LikesDao;
+import com.tinder.dao.repositories.UserDao;
+import com.tinder.models.Like;
+import com.tinder.models.User;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
