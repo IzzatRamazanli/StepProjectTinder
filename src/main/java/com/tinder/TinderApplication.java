@@ -5,10 +5,16 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import javax.servlet.DispatcherType;
+import java.util.EnumSet;
+
 public class TinderApplication {
     public static void main(String[] args) throws Exception {
         Server server = new Server(8080);
         ServletContextHandler handler = new ServletContextHandler();
+
+        EnumSet<DispatcherType> dt = EnumSet.of(DispatcherType.REQUEST);
+
 
         handler.addServlet(TestServlet.class, "/test");
         handler.addServlet(new ServletHolder(LikeServlet.class), "/like");
