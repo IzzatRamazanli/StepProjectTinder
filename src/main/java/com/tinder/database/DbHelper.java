@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbHelper {
-    private static final String url = "jdbc:mysql://localhost:3306/tinder";
-    private static final String user = "root";
+    private static final String url = "jdbc:postgresql://localhost:5432/tinder";
+    private static final String user = "postgres";
     private static final String password = "root";
 
     public Connection connection() throws SQLException {

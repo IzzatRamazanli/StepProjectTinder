@@ -4,6 +4,7 @@ import com.tinder.dao.Dao;
 import com.tinder.model.Message;
 
 import java.util.List;
+import java.util.Optional;
 
 public class MessagesDao implements Dao<Message> {
     @Override
@@ -12,7 +13,7 @@ public class MessagesDao implements Dao<Message> {
     }
 
     @Override
-    public Message get(int id) {
+    public Optional<Message> get(int id) {
         return null;
     }
 
@@ -21,10 +22,6 @@ public class MessagesDao implements Dao<Message> {
 
     }
 
-    @Override
-    public void update(Message entity) {
-
-    }
 
     @Override
     public void delete(int id) {
