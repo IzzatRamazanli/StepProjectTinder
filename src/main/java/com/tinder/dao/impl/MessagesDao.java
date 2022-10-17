@@ -1,7 +1,6 @@
 package com.tinder.dao.impl;
 
 import com.tinder.dao.Dao;
-import com.tinder.model.Like;
 import com.tinder.model.Message;
 import lombok.SneakyThrows;
 
