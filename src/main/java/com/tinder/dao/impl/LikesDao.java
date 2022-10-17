@@ -35,6 +35,7 @@ public class LikesDao implements Dao<Like> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Like l = new Like(
+                        resultSet.getInt("id"),
                         resultSet.getInt("from"),
                         resultSet.getInt("to"),
                         resultSet.getBoolean("status")

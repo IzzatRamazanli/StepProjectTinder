@@ -2,13 +2,15 @@ package com.tinder.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class Message {
     private int id;
     private int sender;
@@ -17,10 +19,16 @@ public class Message {
     private String sendDate;
 
     public Message(int sender, int receiver, String content) {
-        this.sendDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
     }
 
+    public Message(int id, int sender, int receiver, String content, String sendDate) {
+        this.id = id;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.content = content;
+        this.sendDate = sendDate;
+    }
 }
