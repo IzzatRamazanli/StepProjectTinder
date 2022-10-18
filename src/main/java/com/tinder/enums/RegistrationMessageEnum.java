@@ -1,4 +1,4 @@
-package com.tinder.services.enums;
+package com.tinder.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

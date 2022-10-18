@@ -1,13 +1,11 @@
 package com.tinder.servlets;
 
 import com.tinder.services.RegistrationService;
-import com.tinder.services.enums.RegistrationMessageEnum;
-import com.tinder.utils.SessionRelated;
+import com.tinder.enums.RegistrationMessageEnum;
 import com.tinder.utils.TemplateEngine;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

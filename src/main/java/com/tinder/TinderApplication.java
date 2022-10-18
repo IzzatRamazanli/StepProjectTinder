@@ -3,10 +3,13 @@ package com.tinder;
 import com.tinder.dao.repositories.UserDao;
 import com.tinder.database.DbHelper;
 import com.tinder.filters.CookieFilter;
+import com.tinder.filters.LoginFilter;
 import com.tinder.services.LoginService;
 import com.tinder.services.RegistrationService;
 import com.tinder.servlets.*;
+import com.tinder.utils.TemplateEngine;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
@@ -30,9 +33,12 @@ public class TinderApplication {
 
         LoginService loginService = new LoginService(userDao);
         LoginServlet loginServlet = new LoginServlet(loginService);
+        LoginFilter loginFilter = new LoginFilter(loginService);
 
         handler.addFilter(CookieFilter.class, "/register", dt);
         handler.addFilter(CookieFilter.class, "/login", dt);
+        handler.addFilter(new FilterHolder(loginFilter), "/login", dt);
+
         //--------------------------- Registration and Login -----------------------------------------------//
 
 

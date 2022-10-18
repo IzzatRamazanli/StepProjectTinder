@@ -2,10 +2,9 @@ package com.tinder.services;
 
 import com.tinder.dao.repositories.UserDao;
 import com.tinder.models.User;
-import com.tinder.services.enums.RegistrationMessageEnum;
+import com.tinder.enums.RegistrationMessageEnum;
 import lombok.RequiredArgsConstructor;
 
-import java.nio.file.Path;
 import java.util.List;
 
 @RequiredArgsConstructor

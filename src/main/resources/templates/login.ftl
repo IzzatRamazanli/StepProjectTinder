@@ -16,7 +16,8 @@
         </div>
         <div class="box signup">
             <h2>Don't have an account ?</h2>
-            <button class="signupBtn"><a href="registration.ftl" style="text-decoration: none;">Registration</a></button>
+            <button class="signupBtn"><a href="registration.ftl" style="text-decoration: none;">Registration</a>
+            </button>
         </div>
     </div>
     <div class="formBox">
@@ -26,6 +27,7 @@
                 <input type="text" name="email" id="signIn" placeholder="Username" required>
                 <input type="password" name="password" id="password" placeholder="Password" required>
                 <input type="submit" value="LOGIN">
+                ${message!''}
             </form>
         </div>
     </div>
