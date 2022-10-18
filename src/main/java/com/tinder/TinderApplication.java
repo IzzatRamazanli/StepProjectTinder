@@ -35,15 +35,16 @@ public class TinderApplication {
         LoginServlet loginServlet = new LoginServlet(loginService);
         LoginFilter loginFilter = new LoginFilter(loginService);
 
-        handler.addFilter(CookieFilter.class, "/register", dt);
-        handler.addFilter(CookieFilter.class, "/login", dt);
+        handler.addFilter(CookieFilter.class, "/logout", dt);
         handler.addFilter(new FilterHolder(loginFilter), "/login", dt);
 
         //--------------------------- Registration and Login -----------------------------------------------//
 
 
+
         handler.addServlet(new ServletHolder(registrationServlet), "/register");
         handler.addServlet(new ServletHolder(loginServlet), "/login");
+        handler.addServlet(LogoutServlet.class, "/logout");
         handler.addServlet(new ServletHolder(LikeServlet.class), "/like");
         handler.addServlet(new ServletHolder(MessagingServlet.class), "/chat");
         handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/*");

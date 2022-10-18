@@ -16,7 +16,7 @@
         </div>
         <div class="box signup">
             <h2>Don't have an account ?</h2>
-            <button class="signupBtn"><a href="registration.ftl" style="text-decoration: none;">Registration</a>
+            <button class="signupBtn"><a href="/register" style="text-decoration: none;">Registration</a>
             </button>
         </div>
     </div>

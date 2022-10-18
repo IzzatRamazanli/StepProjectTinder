@@ -40,8 +40,7 @@ public class RegistrationServlet extends HttpServlet {
 
         String msg = service.registerUser(email, password, passwordConf, firstname, lastname, Integer.parseInt(age), url);
         if (msg.equals(RegistrationMessageEnum.SUCCESS.getMessage())) {
-            Cookie cookie = SessionRelated.newRandom();
-            resp.addCookie(cookie);
+
             resp.sendRedirect("/login");
         } else {
             data.put("message", msg);

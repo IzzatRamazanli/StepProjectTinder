@@ -24,6 +24,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HashMap<String, Object> data = new HashMap<>();
+        Cookie cookie = SessionRelated.newRandom();
+        resp.addCookie(cookie);
         engine.render("login.ftl", data, resp);
     }
 
