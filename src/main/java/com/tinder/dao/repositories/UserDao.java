@@ -48,6 +48,31 @@ public class UserDao implements Dao<User> {
         return users;
     }
 
+    @SneakyThrows
+    public List<User> getAllUsersToDisplay(int id) {
+        List<User> users = new ArrayList<>();
+        String query =
+                "select distinct u.* from users u where u.id not in(select user_to from likes where user_from = ? ) and u.id != ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            statement.setInt(2, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                users.add(new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("url")
+                ));
+            }
+        }
+        return users;
+    }
+
     @Override
     public List<User> getBy(Predicate<User> predicate) {
         return getAll().stream().filter(predicate).toList();

@@ -17,10 +17,6 @@ public class LogoutServlet extends HttpServlet {
 
         cookie.setMaxAge(0);
         resp.addCookie(cookie);
-
-        try (PrintWriter writer = resp.getWriter()) {
-            String message = String.format("user %s successfully logged out", cookie.getValue());
-            writer.println(message);
-        }
+        resp.sendRedirect("/login");
     }
 }

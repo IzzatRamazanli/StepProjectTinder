@@ -23,7 +23,7 @@ public class LikesDao implements Dao<Like> {
 
     private final String getLike = "select * from likes where id = ?";
 
-    private final String insertLike = "insert into likes(from, to, status)" +
+    private final String insertLike = "insert into likes(user_from, user_to, status)" +
             "values(?, ?, ?)";
     private final String deleteLike = "delete from likes where id = ?";
 
@@ -36,8 +36,8 @@ public class LikesDao implements Dao<Like> {
             while (resultSet.next()) {
                 Like l = new Like(
                         resultSet.getInt("id"),
-                        resultSet.getInt("from"),
-                        resultSet.getInt("to"),
+                        resultSet.getInt("userFrom"),
+                        resultSet.getInt("userTo"),
                         resultSet.getBoolean("status")
                 );
                 likes.add(l);
@@ -55,8 +55,8 @@ public class LikesDao implements Dao<Like> {
             return !resultSet.next() ? Optional.empty() : Optional.of(
                     new Like(
                             resultSet.getInt("id"),
-                            resultSet.getInt("from"),
-                            resultSet.getInt("to"),
+                            resultSet.getInt("userFrom"),
+                            resultSet.getInt("userTo"),
                             resultSet.getBoolean("status")
                     ));
         }
@@ -70,8 +70,8 @@ public class LikesDao implements Dao<Like> {
     @SneakyThrows
     public void save(Like entity) {
         try (PreparedStatement statement = connection.prepareStatement(insertLike)) {
-            statement.setInt(1, entity.getFrom());
-            statement.setInt(2, entity.getTo());
+            statement.setInt(1, entity.getUserFrom());
+            statement.setInt(2, entity.getUserTo());
             statement.setBoolean(3, entity.isStatus());
             statement.executeUpdate();
         }

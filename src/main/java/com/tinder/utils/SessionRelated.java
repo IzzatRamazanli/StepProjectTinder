@@ -23,7 +23,7 @@ public class SessionRelated {
     }
 
     public static Cookie findOrDie(HttpServletRequest request) {
-        return find(request).orElseThrow(() -> new RuntimeException("Will never happen due to design"));
+        return find(request).orElseThrow(() -> new RuntimeException("Will never happen due userTo design"));
     }
 
     public static Cookie newRandom() {

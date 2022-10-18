@@ -8,13 +8,13 @@ import lombok.Data;
 public class Like {
 
     private int id;
-    private int from;
-    private int to;
+    private int userFrom;
+    private int userTo;
     private boolean status;
 
     public Like(int from, int to, boolean status) {
-        this.from = from;
-        this.to = to;
+        this.userFrom = from;
+        this.userTo = to;
         this.status = status;
     }
 }

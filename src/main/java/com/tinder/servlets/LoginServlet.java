@@ -4,13 +4,11 @@ import com.tinder.models.User;
 import com.tinder.services.LoginService;
 import com.tinder.utils.SessionRelated;
 import com.tinder.utils.TemplateEngine;
+import com.tinder.utils.UserTracker;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -33,8 +31,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = service.getUser(req.getParameter("email"), req.getParameter("password"));
-        if (user != null) {
-            resp.sendRedirect("/like");
-        }
+        String cookie = SessionRelated.findOrDie(req).getValue();
+        UserTracker.setCookie(cookie);
+        UserTracker.setUser(user);
+        resp.sendRedirect("/users");
     }
 }
