@@ -21,9 +21,9 @@
     </div>
     <div class="formBox">
         <div class="form signinForm">
-            <form>
+            <form method="post">
                 <h3>Sign In</h3>
-                <input type="text" name="signIn" id="signIn" placeholder="Username" required>
+                <input type="text" name="email" id="signIn" placeholder="Username" required>
                 <input type="password" name="password" id="password" placeholder="Password" required>
                 <input type="submit" value="LOGIN">
             </form>

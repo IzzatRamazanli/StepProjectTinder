@@ -28,7 +28,6 @@ public class TemplateEngine {
 
     public void render(String fileName, HashMap<String, Object> data, HttpServletResponse response) throws IOException {
         try (PrintWriter writer = response.getWriter()) {
-            //response.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
             configuration.getTemplate(fileName).process(data, writer);
         } catch (TemplateException e) {
             throw new RuntimeException(e);

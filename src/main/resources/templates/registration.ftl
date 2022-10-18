@@ -22,7 +22,7 @@
     <div class="formBox active">
 
         <div class="form signupForm">
-            <form>
+            <form method="post">
                 <h3>Sign Up</h3>
 
                 <input type="text" name="firstname" id="signIn" placeholder="Firstname" required>
@@ -30,11 +30,10 @@
                 <input type="text" name="age" id="signIn" placeholder="Age" required>
                 <input type="email" name="email" id="email" placeholder="Email" required>
                 <input type="password" name="password" id="password" placeholder="Password" required>
-                <input type="password" name="password" id="password" placeholder="Confirm Password" required>
-                <input type="text" name="pictureUrl" id="signIn" placeholder="Picture URL" required>
-
-
+                <input type="password" name="passwordConf" id="passwordConf" placeholder="Confirm Password" required>
+                <input type="text" name="url" id="signIn" placeholder="Picture URL" required>
                 <input type="submit" value="REGISTER">
+                ${message!''}
             </form>
         </div>
     </div>
