@@ -17,6 +17,6 @@ public class CookieFilter implements HttpFilter {
     @Override
     public void doHttpFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         if (isCookiePresent(request)) chain.doFilter(request, response);
-        else response.sendRedirect("/register");
+        else response.sendRedirect("/login");
     }
 }

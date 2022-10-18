@@ -31,8 +31,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = service.getUser(req.getParameter("email"), req.getParameter("password"));
         if (user != null) {
-            Cookie cookie = SessionRelated.newRandom();
-            resp.addCookie(cookie);
             resp.sendRedirect("/like");
         }
     }
