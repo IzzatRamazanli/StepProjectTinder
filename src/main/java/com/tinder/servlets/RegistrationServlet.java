@@ -2,12 +2,11 @@ package com.tinder.servlets;
 
 import com.tinder.services.RegistrationService;
 import com.tinder.enums.RegistrationMessageEnum;
-import com.tinder.utils.SessionRelated;
 import com.tinder.utils.TemplateEngine;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +39,6 @@ public class RegistrationServlet extends HttpServlet {
 
         String msg = service.registerUser(email, password, passwordConf, firstname, lastname, Integer.parseInt(age), url);
         if (msg.equals(RegistrationMessageEnum.SUCCESS.getMessage())) {
-
             resp.sendRedirect("/login");
         } else {
             data.put("message", msg);

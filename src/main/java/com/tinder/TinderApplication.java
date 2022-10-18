@@ -7,7 +7,6 @@ import com.tinder.filters.LoginFilter;
 import com.tinder.services.LoginService;
 import com.tinder.services.RegistrationService;
 import com.tinder.servlets.*;
-import com.tinder.utils.TemplateEngine;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -40,8 +39,7 @@ public class TinderApplication {
 
         //--------------------------- Registration and Login -----------------------------------------------//
 
-
-
+        handler.addServlet(RootServlet.class, "");
         handler.addServlet(new ServletHolder(registrationServlet), "/register");
         handler.addServlet(new ServletHolder(loginServlet), "/login");
         handler.addServlet(LogoutServlet.class, "/logout");
