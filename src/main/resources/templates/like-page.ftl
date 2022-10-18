@@ -16,10 +16,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-color: #f5f5f5;">
+<h1> ENJOY SURFING THROUGH CANDIDATES </h1><br>
+
 <form method="post">
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
+            <div class="col-md-6" style="padding: 5px">
+                <button type="submit" class="btn btn-warning btn-block btn-group-lg" name="button"
+                        value="logout">
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                </button>
+            </div>
             <div class="col-md-6">
                 <div class="profile bg-light rounded p-2">
                     <div class="row">
@@ -53,11 +61,6 @@
         <div class="col-md-3"></div>
     </div>
 
-    <div class="col-md-6">
-        <button type="submit" class="btn btn-warning btn-block btn-group-lg" name="button"
-                value="logout">
-            <i class="fas fa-sign-out-alt"></i> Log out
-        </button>
-    </div>
+
 </form>
 </body>

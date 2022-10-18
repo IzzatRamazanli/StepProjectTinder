@@ -2,7 +2,6 @@ package com.tinder.servlets;
 
 import com.tinder.models.Like;
 import com.tinder.models.User;
-import com.tinder.services.LikeService;
 import com.tinder.services.UserService;
 import com.tinder.utils.SessionRelated;
 import com.tinder.utils.TemplateEngine;
@@ -13,7 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 
