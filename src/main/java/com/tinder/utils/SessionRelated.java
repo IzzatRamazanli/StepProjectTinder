@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class SessionRelated {
-    public static final String COOKIE_NAME = "user_id";
+    public static final String COOKIE_NAME = "user_cookie_id";
 
     public static Optional<Cookie> find(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();

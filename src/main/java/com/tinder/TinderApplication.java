@@ -34,6 +34,7 @@ public class TinderApplication {
         LoginServlet loginServlet = new LoginServlet(loginService);
         LoginFilter loginFilter = new LoginFilter(loginService);
 
+        handler.addFilter(CookieFilter.class, "", dt);
         handler.addFilter(CookieFilter.class, "/logout", dt);
         handler.addFilter(new FilterHolder(loginFilter), "/login", dt);
 
