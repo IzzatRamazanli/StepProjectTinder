@@ -22,6 +22,8 @@ public class TinderApplication {
         Connection connection = helper.connection();
 
         EnumSet<DispatcherType> dt = EnumSet.of(DispatcherType.REQUEST);
+
+        //---------------------------Registration and Login-----------------------------------------------//
         UserDao userDao = new UserDao(connection);
         RegistrationService registrationService = new RegistrationService(userDao);
         RegistrationServlet registrationServlet = new RegistrationServlet(registrationService);
@@ -31,13 +33,13 @@ public class TinderApplication {
 
         handler.addFilter(CookieFilter.class, "/register", dt);
         handler.addFilter(CookieFilter.class, "/login", dt);
+        //--------------------------- Registration and Login -----------------------------------------------//
 
 
-        handler.addServlet(TestServlet.class, "/test");
-        handler.addServlet(new ServletHolder(LikeServlet.class), "/like");
         handler.addServlet(new ServletHolder(registrationServlet), "/register");
-        handler.addServlet(new ServletHolder(MessagingServlet.class), "/chat");
         handler.addServlet(new ServletHolder(loginServlet), "/login");
+        handler.addServlet(new ServletHolder(LikeServlet.class), "/like");
+        handler.addServlet(new ServletHolder(MessagingServlet.class), "/chat");
         handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/*");
 
         server.setHandler(handler);
