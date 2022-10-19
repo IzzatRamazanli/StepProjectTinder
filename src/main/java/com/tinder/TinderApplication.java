@@ -1,14 +1,14 @@
 package com.tinder;
 
 import com.tinder.dao.repositories.LikesDao;
+import com.tinder.dao.repositories.MessagesDao;
 import com.tinder.dao.repositories.UserDao;
 import com.tinder.database.DbHelper;
 import com.tinder.filters.CookieFilter;
 import com.tinder.filters.LoginFilter;
+import com.tinder.filters.MessagingFilter;
 import com.tinder.filters.SessionFilter;
-import com.tinder.services.LoginService;
-import com.tinder.services.RegistrationService;
-import com.tinder.services.UserService;
+import com.tinder.services.*;
 import com.tinder.servlets.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
@@ -41,17 +41,24 @@ public class TinderApplication {
         //--------------------------- Registration and Login -----------------------------------------------//
 
         LikesDao likesDao = new LikesDao(connection);
+        MessagesDao messagesDao = new MessagesDao(connection);
+        LikeService likeService = new LikeService(userDao, likesDao, connection);
         UserService userService = new UserService(userDao, likesDao);
+        MessageService messageService = new MessageService(messagesDao);
         UserServlet userServlet = new UserServlet(userService);
+
+        LikeServlet likeServlet = new LikeServlet(likeService);
+
+        MessagingServlet messagingServlet = new MessagingServlet(messageService, userService);
 
         handler.addServlet(RootServlet.class, "");
         handler.addServlet(new ServletHolder(registrationServlet), "/register");
         handler.addServlet(new ServletHolder(loginServlet), "/login");
         handler.addServlet(new ServletHolder(userServlet), "/users");
         handler.addServlet(LogoutServlet.class, "/logout");
-        handler.addServlet(new ServletHolder(LikeServlet.class), "/liked");
-        handler.addServlet(new ServletHolder(MessagingServlet.class), "/chat");
-        handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/*");
+        handler.addServlet(new ServletHolder(likeServlet), "/liked");
+        handler.addServlet(new ServletHolder(messagingServlet), "/messages/*");
+        handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/static/*");
 
 
         handler.addFilter(CookieFilter.class, "", dt);
@@ -59,6 +66,8 @@ public class TinderApplication {
         handler.addFilter(new FilterHolder(loginFilter), "/login/*", dt);
         handler.addFilter(SessionFilter.class, "/users", dt);
         handler.addFilter(SessionFilter.class, "/liked", dt);
+        handler.addFilter(SessionFilter.class, "/messages/{id}", dt);
+        handler.addFilter(MessagingFilter.class, "/messages/{id}", dt);
 
         server.setHandler(handler);
         server.start();

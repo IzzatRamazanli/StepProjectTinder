@@ -6,7 +6,6 @@ import com.tinder.models.Like;
 import com.tinder.models.User;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor

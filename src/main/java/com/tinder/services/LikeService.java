@@ -44,7 +44,7 @@ public class LikeService {
 
         List<User> users = new ArrayList<>();
         String query = "select  *  from users where id  " +
-                "in(select from likes where to = ? and status = true)";
+                "in(select user_to from likes where user_from = ? and status = true)";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
@@ -61,7 +61,6 @@ public class LikeService {
 
                 users.add(new User(uid, email, password, firstname, lastname, age, url));
             }
-
         }
         return users;
     }
