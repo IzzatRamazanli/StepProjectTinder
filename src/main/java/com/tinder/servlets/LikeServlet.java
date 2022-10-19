@@ -25,9 +25,13 @@ public class LikeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (SessionRelated.find(req).isPresent()) {
             HashMap<String, Object> data = new HashMap<>();
-            List<User> likedUser = likeService.getLikedUser(UserTracker.getUser().getId());
-            data.put("users", likedUser);
-            engine.render("people-list.ftl", data, resp);
+            User user = UserTracker.getUser();
+            if (user != null) {
+                List<User> likedUser = likeService.getLikedUser(user.getId());
+                data.put("users", likedUser);
+                engine.render("people-list.ftl", data, resp);
+            } else resp.sendRedirect("/login");
+
         } else resp.sendRedirect("/login");
 
     }
