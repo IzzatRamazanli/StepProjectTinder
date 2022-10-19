@@ -20,8 +20,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class MessagingServlet extends HttpServlet {
-//    http://localhost:8080/chat
-
     private final TemplateEngine engine = new TemplateEngine(this);
     private final MessageService messageService;
     private final UserService userService;

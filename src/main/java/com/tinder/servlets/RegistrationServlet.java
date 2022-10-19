@@ -15,7 +15,6 @@ import java.util.HashMap;
 
 @RequiredArgsConstructor
 public class RegistrationServlet extends HttpServlet {
-    //    http://localhost:8080/register
     private final TemplateEngine engine = new TemplateEngine(this);
     private final RegistrationService service;
 

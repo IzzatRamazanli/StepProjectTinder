@@ -18,8 +18,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class LikeServlet extends HttpServlet {
-//    http://localhost:8080/like
-
     private final TemplateEngine engine = new TemplateEngine(this);
     private final LikeService likeService;
 

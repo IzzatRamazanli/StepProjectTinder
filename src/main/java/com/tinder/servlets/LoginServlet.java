@@ -15,8 +15,6 @@ import java.util.HashMap;
 
 @RequiredArgsConstructor
 public class LoginServlet extends HttpServlet {
-//    http://localhost:8080/login
-
     private final TemplateEngine engine = new TemplateEngine(this);
     private final LoginService service;
 

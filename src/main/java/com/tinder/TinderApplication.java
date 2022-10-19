@@ -26,29 +26,21 @@ public class TinderApplication {
         DbHelper helper = new DbHelper();
         Connection connection = helper.connection();
 
-        EnumSet<DispatcherType> dt = EnumSet.of(DispatcherType.REQUEST);
-
-        //---------------------------Registration and Login-----------------------------------------------//
+        LikesDao likesDao = new LikesDao(connection);
         UserDao userDao = new UserDao(connection);
-        RegistrationService registrationService = new RegistrationService(userDao);
-        RegistrationServlet registrationServlet = new RegistrationServlet(registrationService);
+        MessagesDao messagesDao = new MessagesDao(connection);
 
         LoginService loginService = new LoginService(userDao);
-        LoginServlet loginServlet = new LoginServlet(loginService);
-        LoginFilter loginFilter = new LoginFilter(loginService);
-
-
-        //--------------------------- Registration and Login -----------------------------------------------//
-
-        LikesDao likesDao = new LikesDao(connection);
-        MessagesDao messagesDao = new MessagesDao(connection);
         LikeService likeService = new LikeService(userDao, likesDao, connection);
         UserService userService = new UserService(userDao, likesDao);
+        RegistrationService registrationService = new RegistrationService(userDao);
         MessageService messageService = new MessageService(messagesDao);
+
+        RegistrationServlet registrationServlet = new RegistrationServlet(registrationService);
+        LoginServlet loginServlet = new LoginServlet(loginService);
+        LoginFilter loginFilter = new LoginFilter(loginService);
         UserServlet userServlet = new UserServlet(userService);
-
         LikeServlet likeServlet = new LikeServlet(likeService);
-
         MessagingServlet messagingServlet = new MessagingServlet(messageService, userService);
 
         handler.addServlet(RootServlet.class, "");
@@ -60,6 +52,7 @@ public class TinderApplication {
         handler.addServlet(new ServletHolder(messagingServlet), "/messages/*");
         handler.addServlet(new ServletHolder(new StaticFileServlet("src/main/resources/templates")), "/static/*");
 
+        EnumSet<DispatcherType> dt = EnumSet.of(DispatcherType.REQUEST);
 
         handler.addFilter(CookieFilter.class, "", dt);
         handler.addFilter(CookieFilter.class, "/logout", dt);
