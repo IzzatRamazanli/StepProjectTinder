@@ -18,6 +18,13 @@ public class Message {
         this.content = content;
     }
 
+    public Message(int sender, int receiver, String content, String sendDate) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.content = content;
+        this.sendDate = sendDate;
+    }
+
     public Message(int id, int sender, int receiver, String content, String sendDate) {
         this.id = id;
         this.sender = sender;

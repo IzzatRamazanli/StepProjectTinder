@@ -70,6 +70,31 @@ public class MessagesDao implements Dao<Message> {
         return getAll().stream().filter(predicate).toList();
     }
 
+    @SneakyThrows
+    public List<Message> getAllMessagesByUsers(int senderId, int receiverId) {
+        List<Message> messages = new ArrayList<>();
+        String query = "select * from messages " +
+                " where (sender = ? and receiver = ?)" +
+                " or (sender = ? and receiver = ?)" +
+                " order by id asc";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, senderId);
+            statement.setInt(2, receiverId);
+            statement.setInt(3, receiverId);
+            statement.setInt(4, senderId);
+            ResultSet set = statement.executeQuery();
+            while (set.next()) {
+                messages.add(new Message(
+                        set.getInt("sender"),
+                        set.getInt("receiver"),
+                        set.getString("content"),
+                        set.getString("send_date")
+                ));
+            }
+        }
+        return messages;
+    }
+
     @Override
     @SneakyThrows
     public void save(Message entity) {

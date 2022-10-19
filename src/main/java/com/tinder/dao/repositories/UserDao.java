@@ -69,8 +69,11 @@ public class UserDao implements Dao<User> {
                         resultSet.getString("url")
                 ));
             }
+            return users;
+        } catch (Exception e) {
+            return new ArrayList<>();
         }
-        return users;
+
     }
 
     @Override

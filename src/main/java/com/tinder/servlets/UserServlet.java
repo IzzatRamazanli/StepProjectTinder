@@ -33,8 +33,8 @@ public class UserServlet extends HttpServlet {
                 data.put("lastname", selected.getLastname());
                 data.put("age", selected.getAge());
                 engine.render("like-page.ftl", data, resp);
-            }
-        } else resp.sendRedirect("/liked");
+            } else resp.sendRedirect("/liked");
+        } else resp.sendRedirect("/login");
     }
 
     @Override
