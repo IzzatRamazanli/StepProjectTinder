@@ -31,7 +31,7 @@
                                 <tr onclick="location.href='/messages/${user.getId()}'" class="bg-light">
                                     <td>
                                         <div class="avatar-img">
-                                            <img class="img-circle" src="${user.getUrl()}">  
+                                            <img class="img-circle" src="${user.getUrl()}">
                                         </div>
                                     </td>
                                     <td class="align-middle">
@@ -47,6 +47,15 @@
                 </div>
             </div>
         </div>
+        <form method="post">
+            <div class="col-md-6" style="padding: 20px">
+                <button type="submit" class="btn btn-warning btn-block btn-group-lg" name="button"
+                        value="logout">
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                </button>
+            </div>
+        </form>
+
     </div>
 </div>
 </body>

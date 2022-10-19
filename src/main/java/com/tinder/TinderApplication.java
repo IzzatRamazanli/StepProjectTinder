@@ -66,7 +66,7 @@ public class TinderApplication {
         handler.addFilter(new FilterHolder(loginFilter), "/login/*", dt);
         handler.addFilter(SessionFilter.class, "/users", dt);
         handler.addFilter(SessionFilter.class, "/liked", dt);
-        handler.addFilter(SessionFilter.class, "/messages/{id}", dt);
+        //handler.addFilter(SessionFilter.class, "/messages/{id}", dt);
         handler.addFilter(MessagingFilter.class, "/messages/{id}", dt);
 
         server.setHandler(handler);

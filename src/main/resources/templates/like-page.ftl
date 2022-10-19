@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body style="background-color: #f5f5f5;">
-<h1> ENJOY SURFING THROUGH CANDIDATES </h1><br>
+<h2> ENJOY SURFING THROUGH CANDIDATES </h2><br>
 
 <form method="post">
     <div class="container">
