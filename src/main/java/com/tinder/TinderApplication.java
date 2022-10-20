@@ -29,6 +29,7 @@ public class TinderApplication {
         ServletContextHandler handler = new ServletContextHandler();
         Connection connection = DbHelper.connectionFromUrl(HerokuEnv.jdbc_url());
 
+
         LikesDao likesDao = new LikesDao(connection);
         UserDao userDao = new UserDao(connection);
         MessagesDao messagesDao = new MessagesDao(connection);
@@ -39,7 +40,7 @@ public class TinderApplication {
         RegistrationService registrationService = new RegistrationService(userDao);
         MessageService messageService = new MessageService(messagesDao);
 
-        RegistrationServlet registrationServlet = new RegistrationServlet(registrationService);
+        RegistrationServlet registrationServlet = new RegistrationServlet(registrationService,loginService);
         LoginServlet loginServlet = new LoginServlet(loginService);
         LoginFilter loginFilter = new LoginFilter(loginService);
         UserServlet userServlet = new UserServlet(userService);
