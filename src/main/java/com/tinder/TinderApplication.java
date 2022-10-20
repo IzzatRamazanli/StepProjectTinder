@@ -46,7 +46,7 @@ public class TinderApplication {
         LikeServlet likeServlet = new LikeServlet(likeService);
         MessagingServlet messagingServlet = new MessagingServlet(messageService, userService);
 
-        //handler.addServlet(RootServlet.class, "");
+        handler.addServlet(RootServlet.class, "");
         handler.addServlet(new ServletHolder(registrationServlet), "/register");
         handler.addServlet(new ServletHolder(loginServlet), "/login");
         handler.addServlet(new ServletHolder(userServlet), "/users");
@@ -57,7 +57,7 @@ public class TinderApplication {
 
         EnumSet<DispatcherType> dt = EnumSet.of(DispatcherType.REQUEST);
 
-        //handler.addFilter(CookieFilter.class, "", dt);
+        handler.addFilter(CookieFilter.class, "", dt);
         handler.addFilter(CookieFilter.class, "/logout", dt);
         handler.addFilter(new FilterHolder(loginFilter), "/login/*", dt);
         handler.addFilter(SessionFilter.class, "/users", dt);
