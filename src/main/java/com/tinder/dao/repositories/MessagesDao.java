@@ -71,6 +71,7 @@ public class MessagesDao implements Dao<Message> {
         return getAll().stream().filter(predicate).collect(Collectors.toList());
     }
 
+
     @SneakyThrows
     public List<Message> getAllMessagesByUsers(int senderId, int receiverId) {
         List<Message> messages = new ArrayList<>();

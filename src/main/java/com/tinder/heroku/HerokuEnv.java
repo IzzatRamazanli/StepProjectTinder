@@ -5,20 +5,26 @@ public class HerokuEnv {
         try {
             return Integer.parseInt(System.getenv("PORT"));
         } catch (NumberFormatException ex) {
-            return 5000;
+            return 8080;
         }
     }
 
     public static String jdbc_url() {
-        return "jdbc:postgresql://localhost:5432/tinder";
+        String url = System.getenv("JDBC_DATABASE_URL");
+        if (url == null) throw new IllegalArgumentException("JDBC_DATABASE_URL is empty!!!");
+        return url;
 
     }
 
     public static String jdbc_username() {
-        return "postgres";
+        String username = System.getenv("JDBC_DATABASE_USERNAME");
+        if (username == null) throw new IllegalArgumentException("JDBC_DATABASE_USERNAME is empty!!!");
+        return username;
     }
 
     public static String jdbc_password() {
-        return "root";
+        String url = System.getenv("JDBC_DATABASE_PASSWORD");
+        if (url == null) throw new IllegalArgumentException("JDBC_DATABASE_PASSWORD is empty!!!");
+        return url;
     }
 }

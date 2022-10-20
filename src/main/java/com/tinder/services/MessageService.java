@@ -14,16 +14,16 @@ public class MessageService {
         return messagesDao.getAll();
     }
 
-    public List<Message> getAllMessagesByUser(int senderId, int receiverId) {
-        return messagesDao.getAllMessagesByUsers(senderId, receiverId);
-    }
-
     public void createNewMessage(Message message) {
         messagesDao.save(message);
     }
 
     public Message getMessage(int id) {
         return messagesDao.get(id).orElse(null);
+    }
+
+    public List<Message> getAllMessagesByUsers(int senderId, int receiverId) {
+        return messagesDao.getAllMessagesByUsers(senderId, receiverId);
     }
 
     public void deleteMessage(int id) {

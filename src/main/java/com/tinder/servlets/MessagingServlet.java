@@ -30,12 +30,16 @@ public class MessagingServlet extends HttpServlet {
         if (SessionRelated.find(req).isPresent() &&
                 SessionRelated.findOrDie(req).getValue().equals(UserTracker.getCookie())) {
             User user = UserTracker.getUser();
-            int receiver = Integer.parseInt(req.getPathInfo().replace("/", ""));
-            List<Message> messages = messageService.getAllMessagesByUser(user.getId(), receiver);
-            data.put("messages", messages);
-            data.put("sender", user.getId());
-            data.put("receiver", userService.getUser(receiver));
+            if (req.getPathInfo() != null) {
+                int receiver = Integer.parseInt(req.getPathInfo().replace("/", ""));
+                List<Message> messages = messageService.getAllMessagesByUsers(user.getId(), receiver);
+                data.put("messages", messages);
+                data.put("sender", user.getId());
+                data.put("receiver", userService.getUser(receiver));
+
+            } else resp.sendRedirect("/login");
             engine.render("chat.ftl", data, resp);
+
         } else resp.sendRedirect("/login");
 
     }
