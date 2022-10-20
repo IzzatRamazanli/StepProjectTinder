@@ -24,12 +24,11 @@ import java.util.EnumSet;
 public class TinderApplication {
     public static void main(String[] args) throws Exception {
 
-        //DbMigration.migrate(HerokuEnv.jdbc_url(), HerokuEnv.jdbc_username(), HerokuEnv.jdbc_password());
+        DbMigration.migrate(HerokuEnv.jdbc_url(), HerokuEnv.jdbc_username(), HerokuEnv.jdbc_password());
         Server server = new Server(HerokuEnv.port());
         ServletContextHandler handler = new ServletContextHandler();
         DbHelper helper = new DbHelper();
-        DbMigration.migrate(DbHelper.url, DbHelper.user, DbHelper.password);
-        Connection connection = helper.connection();
+        Connection connection = DbHelper.connectionFromUrl(HerokuEnv.jdbc_url());
 
         LikesDao likesDao = new LikesDao(connection);
         UserDao userDao = new UserDao(connection);
@@ -48,7 +47,7 @@ public class TinderApplication {
         LikeServlet likeServlet = new LikeServlet(likeService);
         MessagingServlet messagingServlet = new MessagingServlet(messageService, userService);
 
-        handler.addServlet(RootServlet.class, "");
+        //handler.addServlet(RootServlet.class, "");
         handler.addServlet(new ServletHolder(registrationServlet), "/register");
         handler.addServlet(new ServletHolder(loginServlet), "/login");
         handler.addServlet(new ServletHolder(userServlet), "/users");
@@ -59,7 +58,7 @@ public class TinderApplication {
 
         EnumSet<DispatcherType> dt = EnumSet.of(DispatcherType.REQUEST);
 
-        handler.addFilter(CookieFilter.class, "", dt);
+        //handler.addFilter(CookieFilter.class, "", dt);
         handler.addFilter(CookieFilter.class, "/logout", dt);
         handler.addFilter(new FilterHolder(loginFilter), "/login/*", dt);
         handler.addFilter(SessionFilter.class, "/users", dt);
