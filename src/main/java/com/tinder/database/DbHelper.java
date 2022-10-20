@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbHelper {
-    private static final String url = "jdbc:postgresql://localhost:5432/tinder";
-    private static final String user = "postgres";
-    private static final String password = "root";
+    public static final String url = "jdbc:postgresql://localhost:5432/tinder";
+    public static final String user = "postgres";
+    public static final String password = "root";
 
     @SneakyThrows
     public Connection connection() {

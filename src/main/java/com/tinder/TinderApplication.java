@@ -23,10 +23,12 @@ import java.util.EnumSet;
 
 public class TinderApplication {
     public static void main(String[] args) throws Exception {
+
         //DbMigration.migrate(HerokuEnv.jdbc_url(), HerokuEnv.jdbc_username(), HerokuEnv.jdbc_password());
-        Server server = new Server(8080);
+        Server server = new Server(HerokuEnv.port());
         ServletContextHandler handler = new ServletContextHandler();
         DbHelper helper = new DbHelper();
+        DbMigration.migrate(DbHelper.url, DbHelper.user, DbHelper.password);
         Connection connection = helper.connection();
 
         LikesDao likesDao = new LikesDao(connection);
