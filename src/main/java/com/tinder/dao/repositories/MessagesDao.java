@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class MessagesDao implements Dao<Message> {
 
@@ -67,7 +68,7 @@ public class MessagesDao implements Dao<Message> {
 
     @Override
     public List<Message> getBy(Predicate<Message> predicate) {
-        return getAll().stream().filter(predicate).toList();
+        return getAll().stream().filter(predicate).collect(Collectors.toList());
     }
 
     @SneakyThrows
