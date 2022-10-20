@@ -5,7 +5,7 @@
 
 
 ## Deployment
-Heroku used for deployment
+Heroku used for deployment:
 Public link: http://az-iba-tinder.herokuapp.com/login
 
 ### Test Credentials
