@@ -17,7 +17,7 @@ public class DbHelper {
     }
 
     @SneakyThrows
-    public Connection connectionFromUrl(String jdbc_url){
+    public static Connection connectionFromUrl(String jdbc_url){
         return DriverManager.getConnection(jdbc_url);
     }
 

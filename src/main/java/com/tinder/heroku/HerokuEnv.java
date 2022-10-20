@@ -10,20 +10,15 @@ public class HerokuEnv {
     }
 
     public static String jdbc_url() {
-        String url = System.getenv("jdbc:postgresql://localhost:5432/tinder");
-        if (url == null) throw new IllegalArgumentException("JDBC_DATABASE_URL is empty!!!");
-        return url;
+        return "jdbc:postgresql://localhost:5432/tinder";
+
     }
 
     public static String jdbc_username() {
-        String url = System.getenv("postgres");
-        if (url == null) throw new IllegalArgumentException("JDBC_DATABASE_USERNAME is empty!!!");
-        return url;
+        return "postgres";
     }
 
     public static String jdbc_password() {
-        String url = System.getenv("root");
-        if (url == null) throw new IllegalArgumentException("JDBC_DATABASE_PASSWORD is empty!!!");
-        return url;
+        return "root";
     }
 }
