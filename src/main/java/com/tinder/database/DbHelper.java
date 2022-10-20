@@ -16,6 +16,11 @@ public class DbHelper {
         return DriverManager.getConnection(url, user, password);
     }
 
+    @SneakyThrows
+    public Connection connectionFromUrl(String jdbc_url){
+        return DriverManager.getConnection(jdbc_url);
+    }
+
     public void showErrorMessage(SQLException ex) {
         System.out.println("Error: " + ex.getMessage());
         System.out.println("Error code: " + ex.getErrorCode());

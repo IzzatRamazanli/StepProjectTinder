@@ -8,6 +8,8 @@ import com.tinder.filters.CookieFilter;
 import com.tinder.filters.LoginFilter;
 import com.tinder.filters.MessagingFilter;
 import com.tinder.filters.SessionFilter;
+import com.tinder.heroku.DbMigration;
+import com.tinder.heroku.HerokuEnv;
 import com.tinder.services.*;
 import com.tinder.servlets.*;
 import org.eclipse.jetty.server.Server;
@@ -21,10 +23,11 @@ import java.util.EnumSet;
 
 public class TinderApplication {
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8080);
+        DbMigration.migrate(HerokuEnv.jdbc_url(), HerokuEnv.jdbc_username(), HerokuEnv.jdbc_password());
+        Server server = new Server(HerokuEnv.port());
         ServletContextHandler handler = new ServletContextHandler();
         DbHelper helper = new DbHelper();
-        Connection connection = helper.connection();
+        Connection connection = helper.connectionFromUrl(HerokuEnv.jdbc_url());
 
         LikesDao likesDao = new LikesDao(connection);
         UserDao userDao = new UserDao(connection);
