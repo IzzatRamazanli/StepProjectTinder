@@ -15,12 +15,5 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/tinder</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="d3g73iirdc4gdu@ec2-54-147-36-107.compute-1.amazonaws.com" uuid="96dff327-67e2-4c3b-b03e-4fb278634070">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-54-147-36-107.compute-1.amazonaws.com:5432/d3g73iirdc4gdu</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>

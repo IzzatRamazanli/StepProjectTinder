@@ -24,6 +24,12 @@ import java.util.EnumSet;
 public class TinderApplication {
     public static void main(String[] args) throws Exception {
 
+        //to run on localhost
+//        Server server = new Server(8080);
+//        DbHelper helper = new DbHelper();
+//        Connection connection = helper.connection();
+
+
         DbMigration.migrate(HerokuEnv.jdbc_url(), HerokuEnv.jdbc_username(), HerokuEnv.jdbc_password());
         Server server = new Server(HerokuEnv.port());
         ServletContextHandler handler = new ServletContextHandler();
