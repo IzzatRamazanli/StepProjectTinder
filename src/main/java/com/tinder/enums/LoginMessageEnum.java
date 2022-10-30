@@ -8,5 +8,6 @@ import lombok.RequiredArgsConstructor;
 public enum LoginMessageEnum {
     LOGIN_SUCCESS("Successfully logged in"),
     LOGIN_FAIL("Wrong password or email, try again");
+
     private final String message;
 }

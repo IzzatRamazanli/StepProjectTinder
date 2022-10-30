@@ -12,7 +12,7 @@
     <div class="blueBg">
         <div class="box signin">
             <h2>Already have an account ?</h2>
-            <button class="signinBtn"><a  href="/login" style="text-decoration: none;">Sign in</a></button>
+            <button class="signinBtn"><a href="/login" style="text-decoration: none;">Sign in</a></button>
         </div>
         <div class="box signup">
             <h2>Don't have an account ?</h2>
@@ -38,7 +38,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>
